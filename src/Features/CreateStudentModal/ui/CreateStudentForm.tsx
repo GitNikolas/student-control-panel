@@ -1,14 +1,15 @@
 import { Form, Input, Select, Button, Space } from 'antd';
 import { UserAddOutlined, MailOutlined, PhoneOutlined, BookOutlined, StarOutlined } from '@ant-design/icons';
-import type { CreateStudentFormData } from '../model/types';
+import type { Student } from "../../../entities/StudentCard/model/student.types.ts";
+import { COURSE_OPTIONS } from '../model/constants.ts';
 
 const { TextArea } = Input;
 
 interface CreateStudentFormProps {
-    onSubmit: (values: CreateStudentFormData) => Promise<void>;
+    onSubmit: (values: Student) => Promise<void>;
     onCancel: () => void;
     loading?: boolean;
-    initialValues?: Partial<CreateStudentFormData>;
+    initialValues?: Partial<Student>;
 }
 
 const STATUS_OPTIONS = [
@@ -16,10 +17,7 @@ const STATUS_OPTIONS = [
     { value: 'inactive', label: 'Неактивный', color: 'red' },
 ];
 
-const COURSE_OPTIONS = [1, 2, 3, 4, 5, 6].map(course => ({
-    value: course,
-    label: `${course} курс`
-}));
+
 
 export const CreateStudentForm = ({
     onSubmit,
@@ -29,7 +27,7 @@ export const CreateStudentForm = ({
 }: CreateStudentFormProps) => {
     const [form] = Form.useForm();
 
-    const handleFinish = async (values: CreateStudentFormData) => {
+    const handleFinish = async (values: Student) => {
         await onSubmit(values);
         form.resetFields();
     };

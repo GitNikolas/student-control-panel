@@ -1,8 +1,7 @@
 {
-  "$schema": "./node_modules/json-server/schema.json",
   "students": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Анна Иванова",
       "email": "anna.ivanova@example.com",
       "phoneNumber": "+7 (901) 123-45-67",
@@ -13,7 +12,7 @@
       "managersComment": "Хорошая успеваемость, рекомендую продолжить обучение"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Петр Смирнов",
       "email": "petr.smirnov@example.com",
       "phoneNumber": "+7 (902) 234-56-78",
@@ -21,10 +20,10 @@
       "status": "active",
       "registrationDate": "2026-02-20",
       "homeworkCompleted": 5,
-      "managersComment": "Нужно ускорить темп сдачи работ"
+      "managersComment": "Нужно ускорить темп сдачи работ!"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Елена Козлова",
       "email": "elena.kozlova@example.com",
       "phoneNumber": "+7 (903) 345-67-89",
@@ -35,7 +34,7 @@
       "managersComment": "Отличный студент, завершил курс досрочно"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Михаил Новиков",
       "email": "mikhail.novikov@example.com",
       "phoneNumber": "+7 (904) 456-78-90",
@@ -46,7 +45,7 @@
       "managersComment": "Средний прогресс, требуется дополнительная поддержка"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Ольга Морозова",
       "email": "olga.morozova@example.com",
       "phoneNumber": "+7 (905) 567-89-01",
@@ -57,7 +56,7 @@
       "managersComment": "Долгое отсутствие активности, свяжитесь со студентом"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Дмитрий Волков",
       "email": "dmitry.volkov@example.com",
       "phoneNumber": "+7 (906) 678-90-12",
@@ -68,7 +67,7 @@
       "managersComment": "Активно участвует в вебинарах, хороший темп"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Светлана Павлова",
       "email": "svetlana.pavlova@example.com",
       "phoneNumber": "+7 (907) 789-01-23",
@@ -79,7 +78,7 @@
       "managersComment": "Только начал обучение, первая неделя"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Алексей Соколов",
       "email": "alexey.sokolov@example.com",
       "phoneNumber": "+7 (908) 890-12-34",
@@ -90,7 +89,7 @@
       "managersComment": "Успешно защитил диплом, рекомендую на работу"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Мария Федорова",
       "email": "maria.fedorova@example.com",
       "phoneNumber": "+7 (909) 901-23-45",
@@ -100,5 +99,6 @@
       "homeworkCompleted": 14,
       "managersComment": "Отличные оценки за тесты, может участвовать в менторстве"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

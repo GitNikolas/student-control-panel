@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import type { CreateStudentFormData } from './types';
 import type {Student} from "../../../entities/StudentCard/model/student.types.ts";
 
 export const useCreateStudent = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const createStudent = async (data: CreateStudentFormData): Promise<Student> => {
+    const createStudent = async (data: Student): Promise<Student> => {
         try {
             setIsLoading(true);
             setError(null);

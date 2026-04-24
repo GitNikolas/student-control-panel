@@ -1,13 +1,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import type { Student } from '../../../entities/StudentCard/model/student.types';
-
-export type StudentStatus = 'active' | 'inactive' | 'all';
-
-export interface StudentFilter {
-    name: string;
-    status: StudentStatus;
-    sortBy: 'newest' | 'oldest';
-}
+import type { StudentFilter } from "./filter.types.ts";
 
 export const useStudentFilter = (students: Student[]) => {
     const [filters, setFilters] = useState<StudentFilter>({
@@ -52,7 +45,7 @@ export const useStudentFilter = (students: Student[]) => {
         return result;
     }, [students, filters]);
 
-    const updateFilters = useCallback((filters: Partial<StudentFilter>) => {
+    const updateFilters = useCallback((filters: StudentFilter) => {
         setFilters(prev => ({ ...prev, ...filters }));
     }, []);
 

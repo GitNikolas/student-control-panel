@@ -1,13 +1,13 @@
+export type StudentStatus = 'active' | 'inactive' | 'all';
+
 export interface StudentFilter {
-    name?: string;
-    status?: string;
-    sortBy?: string;
-    registrationDateFrom?: string;
-    registrationDateTo?: string;
+    name: string;
+    status: StudentStatus;
+    sortBy: 'newest' | 'oldest';
 }
 
 export interface StudentFilterProps {
-    onFilterChange: (filters: Partial<StudentFilter>) => void;
+    onFilterChange: (filters: StudentFilter) => void;
     onCreateStudent: () => void;
     onReset?: () => void;
     totalCount?: number;

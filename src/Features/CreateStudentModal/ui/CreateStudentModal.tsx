@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { Form, Input, Select, Button, Space, Typography } from 'antd';
 import { UserAddOutlined, MailOutlined, PhoneOutlined, BookOutlined, StarOutlined } from '@ant-design/icons';
 import type {Student} from "../../../entities/StudentCard/model/student.types.ts";
+import { COURSE_OPTIONS } from "../model/constants.ts";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -17,14 +18,7 @@ interface CreateStudentModalProps {
 const STATUS_OPTIONS = [
     { value: 'active', label: 'Активный', color: 'green' },
     { value: 'inactive', label: 'Неактивный', color: 'red' },
-    { value: 'pending', label: 'На рассмотрении', color: 'orange' },
-    { value: 'graduated', label: 'Выпущен', color: 'blue' },
 ];
-
-const COURSE_OPTIONS = [1, 2, 3, 4, 5, 6].map(course => ({
-    value: course,
-    label: `${course} курс`
-}));
 
 export const CreateStudentModal = ({
    open,
