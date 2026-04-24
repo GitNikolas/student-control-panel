@@ -5,9 +5,7 @@ npm i
 
 npm run serve
 
-
-
-# О Проекте
+## О Проекте
 Личный кабинет учителя
 
 Проект в miro
@@ -15,14 +13,16 @@ https://miro.com/welcomeonboard/cjJ4RTZUZHh5YmxCcmEyZlVsTzU0QUZVbUQzdVVvUVlUVWk0
 
 ![Личный кабинет учителя.jpg](src/shared/assets/images/%D0%9B%D0%B8%D1%87%D0%BD%D1%8B%D0%B9%20%D0%BA%D0%B0%D0%B1%D0%B8%D0%BD%D0%B5%D1%82%20%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8F.jpg)
 
-Технологии: React, TypeScript, Vite
+---
+### Технологии: React, TypeScript, Vite
 
 В качестве мокового API используется json-server
 
 В проекте заложен фундамент под масштабирование засчёт FSD архитектуры
 
+---
 
-Что можно улучшить:
+### Что можно улучшить:
 1. Покрыть код тестами
 2. Запросы к серверу можно описать по OpenApi спецификации
 для последующей генерации запросов согласно контракту
