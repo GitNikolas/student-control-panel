@@ -5,3 +5,11 @@ export interface StudentFilter {
     registrationDateFrom?: string;
     registrationDateTo?: string;
 }
+
+export interface StudentFilterProps {
+    onFilterChange: (filters: Partial<StudentFilter>) => void;
+    onCreateStudent: () => void;
+    onReset?: () => void;
+    totalCount?: number;
+    loading?: boolean;
+}

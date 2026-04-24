@@ -1,4 +1,3 @@
-import React from 'react';
 import { HomeButton } from "../../../shared/ui/HomeButton";
 import styles from './styles.module.css'
 

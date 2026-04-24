@@ -1,46 +1,41 @@
 import { useState, useMemo, useCallback } from 'react';
 import type { Student } from '../../../entities/StudentCard/model/student.types';
-import type { StudentFilter } from './types';
+
+export type StudentStatus = 'active' | 'inactive' | 'all';
+
+export interface StudentFilter {
+    name: string;
+    status: StudentStatus;
+    sortBy: 'newest' | 'oldest';
+}
 
 export const useStudentFilter = (students: Student[]) => {
     const [filters, setFilters] = useState<StudentFilter>({
+        name: '',
+        status: 'all',
         sortBy: 'newest'
     });
 
     const filteredAndSortedStudents = useMemo(() => {
         let result = [...students];
+        // 1. Фильтр по имени
+        const searchTerm = filters.name.trim().toLowerCase() || '';
 
-        // Фильтрация по имени
-        if (filters.name) {
-            const searchLower = filters.name.toLowerCase();
-            result = result.filter(student =>
-                student.name.toLowerCase().includes(searchLower)
-            );
+        if (searchTerm) {
+            result = result.filter(student => {
+                const studentName = student.name?.toLowerCase() || '';
+                return studentName.includes(searchTerm);
+            });
         }
 
-        // Фильтрация по статусу
-        if (filters.status) {
+        // 2. Фильтр по статусу
+        if (filters.status !== 'all') {
             result = result.filter(student =>
                 student.status === filters.status
             );
         }
 
-        // Фильтрация по дате регистрации
-        if (filters.registrationDateFrom) {
-            const fromDate = new Date(filters.registrationDateFrom);
-            result = result.filter(student =>
-                new Date(student.registrationDate) >= fromDate
-            );
-        }
-
-        if (filters.registrationDateTo) {
-            const toDate = new Date(filters.registrationDateTo);
-            result = result.filter(student =>
-                new Date(student.registrationDate) <= toDate
-            );
-        }
-
-        // Сортировка
+        // 3. Сортировка
         switch (filters.sortBy) {
             case 'newest':
                 result.sort((a, b) =>
@@ -52,25 +47,21 @@ export const useStudentFilter = (students: Student[]) => {
                     new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime()
                 );
                 break;
-            case 'name_asc':
-                result.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-            case 'name_desc':
-                result.sort((a, b) => b.name.localeCompare(a.name));
-                break;
-            default:
-                break;
         }
 
         return result;
     }, [students, filters]);
 
-    const updateFilters = useCallback((newFilters: Partial<StudentFilter>) => {
-        setFilters(prev => ({ ...prev, ...newFilters }));
+    const updateFilters = useCallback((filters: Partial<StudentFilter>) => {
+        setFilters(prev => ({ ...prev, ...filters }));
     }, []);
 
     const resetFilters = useCallback(() => {
-        setFilters({ sortBy: 'newest' });
+        setFilters({
+            name: '',
+            status: 'all',
+            sortBy: 'newest'
+        });
     }, []);
 
     return {
