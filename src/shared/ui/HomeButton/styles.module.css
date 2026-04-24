@@ -1,0 +1,11 @@
+.homeButton {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.icon {
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+}
