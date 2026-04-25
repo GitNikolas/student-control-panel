@@ -14,6 +14,7 @@ import {
     PlusOutlined,
 } from '@ant-design/icons';
 import type {StudentFilter as StudentFilterType, StudentFilterProps} from '../model/filter.types.ts';
+import { useDebounce } from "../../../shared/hooks/useDebounce";
 
 const { Search } = Input;
 
@@ -39,6 +40,8 @@ const SORT_OPTIONS = [
     { value: SORT_DIRECTION.oldest, label: 'Сначала старые' },
 ];
 
+const DEBOUNCE_DELAY = 500;
+
 export const StudentFilter = ({
     onFilterChange,
     onCreateStudent,
@@ -48,6 +51,7 @@ export const StudentFilter = ({
     const [searchName, setSearchName] = useState<string>('');
     const [status, setStatus] = useState<string>(STATUSES.all);
     const [sortBy, setSortBy] = useState<string>(SORT_DIRECTION.newest);
+    const debouncedSearchName = useDebounce<string>(searchName, DEBOUNCE_DELAY);
 
     // Применяем фильтры при изменении любого параметра
     useEffect(() => {
@@ -58,7 +62,8 @@ export const StudentFilter = ({
         };
 
         onFilterChange(filters);
-    }, [searchName, status, sortBy]);
+    }, [debouncedSearchName, status, sortBy]);
+
 
     const handleReset = () => {
         setSearchName('');
