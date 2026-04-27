@@ -32,3 +32,4 @@ https://miro.com/welcomeonboard/cjJ4RTZUZHh5YmxCcmEyZlVsTzU0QUZVbUQzdVVvUVlUVWk0
 6. Подключить errorBoundary для обработки ошибок
 7. Реализовать адаптивную вёрстку
 8. Добавить debounce фильтрации по имени студента +
+9. Заменить использование строковых литералов на константы/enum +

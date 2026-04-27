@@ -13,34 +13,11 @@ import {
     FilterOutlined,
     PlusOutlined,
 } from '@ant-design/icons';
-import type {StudentFilter as StudentFilterType, StudentFilterProps} from '../model/filter.types.ts';
+import type { StudentFilter as StudentFilterType, StudentFilterProps } from '../model/filter.types.ts';
 import { useDebounce } from "../../../shared/hooks/useDebounce";
+import { STATUSES, STATUS_OPTIONS, SORT_DIRECTION, SORT_OPTIONS } from '../model/constants.ts';
 
 const { Search } = Input;
-
-const STATUSES = {
-    all: 'all',
-    active: 'active',
-    inactive: 'inactive'
-} as const;
-
-const STATUS_OPTIONS = [
-    { value: STATUSES.all, label: 'Все статусы' },
-    { value: STATUSES.active, label: 'Активный', color: 'green' },
-    { value: STATUSES.inactive, label: 'Неактивный', color: 'red' },
-];
-
-const SORT_DIRECTION = {
-    newest: 'newest',
-    oldest: 'oldest'
-} as const;
-
-const SORT_OPTIONS = [
-    { value: SORT_DIRECTION.newest, label: 'Сначала новые' },
-    { value: SORT_DIRECTION.oldest, label: 'Сначала старые' },
-];
-
-const DEBOUNCE_DELAY = 500;
 
 export const StudentFilter = ({
     onFilterChange,
@@ -49,14 +26,14 @@ export const StudentFilter = ({
     loading = false
 }: StudentFilterProps) => {
     const [searchName, setSearchName] = useState<string>('');
-    const [status, setStatus] = useState<string>(STATUSES.all);
-    const [sortBy, setSortBy] = useState<string>(SORT_DIRECTION.newest);
-    const debouncedSearchName = useDebounce<string>(searchName, DEBOUNCE_DELAY);
+    const [status, setStatus] = useState<StudentFilterType['status']>(STATUSES.all);
+    const [sortBy, setSortBy] = useState<StudentFilterType['sortBy']>(SORT_DIRECTION.newest);
+    const debouncedSearchName = useDebounce<string>(searchName);
 
     // Применяем фильтры при изменении любого параметра
     useEffect(() => {
         const filters: StudentFilterType = {
-            ...(searchName && { name: searchName }),
+            name: searchName,
             status,
             sortBy,
         };

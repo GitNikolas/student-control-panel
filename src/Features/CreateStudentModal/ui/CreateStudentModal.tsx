@@ -55,7 +55,7 @@ export const CreateStudentModal = ({
             onCancel={handleCancel}
             footer={null}
             centered
-            destroyOnClose
+            destroyOnHidden
             width={600}
         >
             <div className={styles.content}>

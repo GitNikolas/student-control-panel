@@ -1,12 +1,13 @@
 import { useState, useMemo, useCallback } from 'react';
 import type { Student } from '../../../entities/StudentCard/model/student.types';
 import type { StudentFilter } from "./filter.types.ts";
+import { STATUSES, SORT_DIRECTION } from "./constants.ts";
 
 export const useStudentFilter = (students: Student[]) => {
     const [filters, setFilters] = useState<StudentFilter>({
         name: '',
-        status: 'all',
-        sortBy: 'newest'
+        status: STATUSES.all,
+        sortBy: SORT_DIRECTION.newest,
     });
 
     const filteredAndSortedStudents = useMemo(() => {
@@ -22,7 +23,7 @@ export const useStudentFilter = (students: Student[]) => {
         }
 
         // 2. Фильтр по статусу
-        if (filters.status !== 'all') {
+        if (filters.status !== STATUSES.all) {
             result = result.filter(student =>
                 student.status === filters.status
             );
@@ -30,12 +31,12 @@ export const useStudentFilter = (students: Student[]) => {
 
         // 3. Сортировка
         switch (filters.sortBy) {
-            case 'newest':
+            case SORT_DIRECTION.newest:
                 result.sort((a, b) =>
                     new Date(b.registrationDate).getTime() - new Date(a.registrationDate).getTime()
                 );
                 break;
-            case 'oldest':
+            case SORT_DIRECTION.oldest:
                 result.sort((a, b) =>
                     new Date(a.registrationDate).getTime() - new Date(b.registrationDate).getTime()
                 );
@@ -52,8 +53,8 @@ export const useStudentFilter = (students: Student[]) => {
     const resetFilters = useCallback(() => {
         setFilters({
             name: '',
-            status: 'all',
-            sortBy: 'newest'
+            status: STATUSES.all,
+            sortBy: SORT_DIRECTION.newest,
         });
     }, []);
 
