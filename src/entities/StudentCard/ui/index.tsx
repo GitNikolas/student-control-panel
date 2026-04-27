@@ -14,7 +14,11 @@ export const StudentCard = ({
     const navigate = useNavigate();
 
     return (
-        <Card size={'small'} onClick={() => navigate(`/students/${id}`)} className={styles.card}>
+        <Card
+            size={'small'}
+            onClick={() => navigate(`/students/${id}`)}
+            className={styles.card}
+        >
             <p>ID: {id}</p>
             <p>Имя: {name}</p>
             <p>Email: {email}</p>
